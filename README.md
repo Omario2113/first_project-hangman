@@ -1,4 +1,4 @@
-# project1-hangman
+# Project 1: Hangman
 
 This will be my first solo project; a *simple*
 game to solidify my fundamentals in Python and
