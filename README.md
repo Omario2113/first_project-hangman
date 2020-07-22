@@ -7,7 +7,5 @@ become more proficient with GitHub's workflow.
 Project Details:
 - Game can be played multiple times in a row
 - Denies invalid inputs for words/letters
-
-Future Upgrades:
-- Displaying the hangman being assembled as the
-players guess
+- Shows the Hangman being consturcted as players guess
+- Shows previous guesses as players guess
