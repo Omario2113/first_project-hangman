@@ -1,32 +1,28 @@
 #Hangman Game (First Project)
 import re
-play_again =True
+play_again = True
 
-while play_again == True:
+while play_again is True:
     #Initializes the program's variables
     game_state, wrong_guesses = 0, 0
     guesses = []
-    head, larm, body, rarm, lleg, rleg = "", "", "", "", "", ""
-    hangman_body = {1:"O",
-                    2:"|",
-                    3:"/",
-                    4:"\\",
-                    5:"/",
-                    6:"\\"}
+    head, body, larm, rarm, lleg, rleg = "", "", "", "", "", ""
 
     #Checks the validity of the word inputed by Player 1
     while game_state == 0:
-        word = input("\n\nWelcome to Hangman!\n\nWhat word do ya wanna guess?: ")
+        word = input("\nWelcome to Hangman!\n\nWhat word do ya wanna guess?: ")
         if re.search(r"[^a-zA-z]", word):
             print("Word entered is invalid...try again!\n")
+        elif len(word) == 0:
+            print("Word entered is invalid...try again!\n")
         else:
-            print("Initializing...word is %d letters long\n" % len(word))
+            print("\n"*50 + "Initializing...word is %d letters long\n" % len(word))
             word_with_guesses = list("_" * len(word))
             game_state = 1
 
     while game_state == 1:
         #Prints current hangman body and word with filled in guesses
-        print(f"""  __
+        print(f"""  __         {guesses}
                 \n | {head}
                 \n |{larm}{body}{rarm}
                 \n_| {lleg}{rleg}""")
@@ -34,8 +30,8 @@ while play_again == True:
         letter = input("What letter would you like to guess?: ")
 
         #Checks the validity of the guesses by Player 2
-        if len(letter) > 1:
-            print("Term entered is invalid...try again!\n")
+        if len(letter) != 1:
+            print("Letter entered is invalid...try again!\n")
         elif letter in guesses:
             print("Letter has already been guessed...try again!\n")
 
@@ -50,9 +46,23 @@ while play_again == True:
                     print("YOU WON, good guessing!")
                     game_state = 2
             else:
+                print("Letter not found...keep going!")
                 wrong_guesses += 1
-                if wrong_guesses == 5:
+                if wrong_guesses == 1:
+                    head = "0"
+                elif wrong_guesses == 2:
+                    body = "|"
+                elif wrong_guesses == 3:
+                    larm = "/"
+                elif wrong_guesses == 4:
+                    rarm = "\\"
+                elif wrong_guesses == 5:
+                    lleg = "/"
                     print("Uh oh...one more wrong guess and you're done...")
+                elif wrong_guesses == 6:
+                    rleg = "\\"
+                    print("Oof...better luck next time")
+                    game_state = 2
 
     #Sees if users want to play again
     while game_state == 2:
