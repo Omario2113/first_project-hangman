@@ -9,3 +9,6 @@ Project Details:
 - Denies invalid inputs for words/letters
 - Shows the Hangman being consturcted as players guess
 - Shows previous guesses as players guess
+
+Future Changes:
+- Change the hangman display to look more game like
